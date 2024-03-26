@@ -1,0 +1,55 @@
+\documentclass[oneside,12pt]{memoir}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.markings}
+
+\hypersetup{colorlinks=true,urlcolor=blue}
+
+\newcommand{\bb}{\mathbb}
+\newcommand{\mc}{\mathcal}
+\newcommand{\ms}{\mathscr}
+
+\makeoddhead{myheadings}{Math 381}{Discrete Mathematical Modeling}{\thepage}
+\pagestyle{myheadings}
+
+\setlist[enumerate,2]{label = (\alph*)}
+
+\begin{document}
+
+\begin{center}
+\textbf{\large Homework 2} \\
+\emph{Due Tuesday, January 12}
+\end{center}
+
+These problems are from \emph{Operations Research, Fourth Edition} by Wayne Winston. See the syllabus or click \href{https://ia801301.us.archive.org/16/items/OperationalResearchWinstonWayne/Operational-Research-Winston-Wayne.pdf}{here} for a link to the pdf.
+
+For each linear program, please state
+\begin{itemize}
+	\item what the variables are
+	\item what the objective function is
+	\item what each constraint comes from
+\end{itemize}
+
+For Problem 4 you will need to use an LP solver. I recommend using \href{https://developers.google.com/optimization}{OR-Tools}, a free software suite developed by Google. It can be used with Python, Java, C++, and C\#. Installation instructions can be found in the previous link or \href{https://developers.google.com/optimization/install}{here}, and detailed instructions on how to use it to solve linear programs can be found \href{https://developers.google.com/optimization/lp/lp_example}{here}. If you are having trouble, please post a question on the Ed Discussion board or come to office hours.
+
+MATLAB can also solve linear programs. See \href{https://www.mathworks.com/help/optim/linear-programming-and-mixed-integer-linear-programming.html?s_tid=CRUX_lftnav}{here}. Note that I don't have experience with MATLAB, so I won't be able to help if you have problems. You can try the Ed Discussion board if you have a question.
+
+Finally, please write your linear program for Problem 4 separately from the code, using the guidelines above. Once you do this, you do not have to include your code in your submission. It  is enough to write something like ``For this LP, GLOP returned an optimal solution of \dots''. However, if your answer is wrong, submitting the code might help us identify where things went wrong.
+
+\begin{enumerate}[leftmargin=*]
+
+\item Winston, Problem 1, page 113. Solve by hand.
+\item Winston, Problem 13, page 115. Do not solve the LP.
+\item Winston, Problem 14, page 115. Do not solve the LP.
+\item Winston, Problem 46, page 120. Please have the computer solve over the \textbf{real numbers}, not the integers. You will not get credit if you use an integer program solver. After you solve the LP, you may need to do some additional work to make a realistic recommendation. You do not have to prove that your recommendation is the best possible.
+
+\end{enumerate}
+
+\end{document}

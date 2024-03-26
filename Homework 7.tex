@@ -1,0 +1,53 @@
+\documentclass[oneside,12pt]{memoir}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.markings}
+
+\hypersetup{colorlinks=true,urlcolor=blue}
+
+\newcommand{\bb}{\mathbb}
+\newcommand{\mc}{\mathcal}
+\newcommand{\ms}{\mathscr}
+
+\makeoddhead{myheadings}{Math 381}{Discrete Mathematical Modeling}{\thepage}
+\pagestyle{myheadings}
+
+\setlist[enumerate,2]{label = (\alph*)}
+
+\begin{document}
+
+\begin{center}
+\textbf{\large Homework 7} \\
+\emph{Due Friday, February 23}
+\end{center}
+
+\begin{enumerate}[leftmargin=*]
+
+\item Problem 2, page 931.
+\item Problem 1, page 957. Solve \textbf{without} a computer.
+\item Problem 8(a), page 941. You may use a computer.
+\item Problem 10, page 941. You may use a computer.
+
+\end{enumerate}
+
+There are several options for finding eigenvectors of a matrix on a computer.
+
+\begin{itemize}
+\item Use a specialized language like MATLAB or R.
+\item In Python, you can use the NumPy or SciPy libraries. I will post examples of these on Canvas in the next couple of days.
+\item In Java, you can use the class EigenDecomposition from
+\begin{center}
+org.apache.commons.math3.linear.EigenDecomposition
+\end{center}
+\item As a last resort, you can use something like WolframAlpha. This will be okay for small matrices, but may not work for large matrices in future homeworks.
+\end{itemize}
+Whatever you use, make sure you state what you did in your write-up. You don't need to submit code.
+
+\end{document}

@@ -1,0 +1,51 @@
+\documentclass[oneside,12pt]{memoir}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.markings}
+
+\newcommand{\bb}{\mathbb}
+\newcommand{\mc}{\mathcal}
+\newcommand{\ms}{\mathscr}
+
+\makeoddhead{myheadings}{Math 381}{Discrete Mathematical Modeling}{\thepage}
+\pagestyle{myheadings}
+
+\setlist[enumerate,2]{label = (\alph*)}
+
+\begin{document}
+
+\begin{center}
+\textbf{\large Homework 1} \\
+\emph{Due Tuesday, January 9}
+\end{center}
+
+The purpose of this assignment is to make sure you have the prerequisite knowledge of linear algebra. You may find it helpful to read Sections 2.1--2.3 of Winston as a review.
+
+Solutions may be hand-written or typed. Please submit through Gradescope.
+
+\begin{enumerate}[leftmargin=*]
+
+\item Find all solutions, by hand, to the system of equations
+\begin{align*}
+x + y + z &= 3 \\
+x + 2y &= 2 \\
+y - z &= -1
+\end{align*}
+Show all your work.
+
+\item During any given year, 10\% of all rural residents move to the city, and 20\% of all city residents move to a rural area (all other people stay put). Let $R_t$ be the number of rural residents at the beginning of year $t$, and $C_t$ be the number of city residents at the beginning of year $t$. Use matrix multiplication to relate the vector $\begin{pmatrix}
+R_{t+1} \\ C_{t+1} \end{pmatrix}$ to the vector $\begin{pmatrix}
+R_{t} \\ C_{t} \end{pmatrix}$.
+
+\item Consider the real system of equations $Ax = b$, where $A$ is an $n \times n$ matrix, and $x$ and $b$ are column vectors with $n$ entries. Suppose that the entries of $A$ and $b$ are found by measurement, and this measurement has a small, random error which is independent for all the entries. Do you expect the system $Ax = b$ to have zero, one, or infinitely many solutions? Explain your reasoning. You do not need to give a rigorous proof, but you should give some convincing reasoning.
+
+\end{enumerate}
+
+\end{document}

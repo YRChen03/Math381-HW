@@ -1,0 +1,53 @@
+\documentclass[oneside,12pt]{memoir}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.markings}
+
+\hypersetup{colorlinks=true,urlcolor=blue}
+
+\newcommand{\bb}{\mathbb}
+\newcommand{\mc}{\mathcal}
+\newcommand{\ms}{\mathscr}
+
+\makeoddhead{myheadings}{Math 381}{Discrete Mathematical Modeling}{\thepage}
+\pagestyle{myheadings}
+
+\setlist[enumerate,2]{label = (\alph*)}
+
+\begin{document}
+
+\begin{center}
+\textbf{\large Homework 2} \\
+\emph{Due Friday, January 19}
+\end{center}
+
+\begin{enumerate}[leftmargin=*]
+
+\item Winston, Problem 5, page 553.
+\item Suppose we have $n$ villages $v_1$, \dots, $v_n$, and $n$ wells $w_1$, \dots, $w_n$. We want to build roads between the villages and wells so that each village is connected to exactly one well, and every village gets a different well. In other words, we want to build a set of $n$ roads, with each road connecting one village to one well, so that 
+	\begin{enumerate}
+		\item Each village has exactly one road entering/leaving.
+		\item Each well has exactly one road entering/leaving.
+	\end{enumerate}
+	Let $c_{ij}$ be the cost of building a road between village $i$ and well $j$. Write a program, which uses an \textbf{integer program solver}, that does the following:
+	
+	\textbf{Input:} The integer $n$, and the values of $c_{ij}$ for all $i$, $j = 1$, \dots, $n$.
+	
+	\textbf{Output:} A set of $n$ roads which satisfy the above conditions and minimize the total cost.
+	
+	You can choose how to format your input and output, but be clear in your comments how you have done so. Please submit your full code with detailed comments to help us read it. Your code can be any language, but we prefer Python, Java, or C++.
+	
+	TIPS: If you are using OR-Tools, read \href{https://developers.google.com/optimization/mip/mip_example}{this} to learn how to define integer-valued variables, and read \href{https://developers.google.com/optimization/mip/mip_var_array}{this} to learn how to use loops to define variables and constraints.
+	
+	Later I will provide some test examples in case you want to test your code.
+	
+\item Take the program you wrote in Problem 3 and remove all the integer constraints. (E.g., replace IntVar() with NumVar().) You now have a program which solves the linear relaxation of the original problem. Try various different inputs and observe the output. What do you notice about the optimal solutions you get?
+\end{enumerate}
+\end{document}

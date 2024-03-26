@@ -1,0 +1,132 @@
+\documentclass[oneside,12pt]{memoir}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{amsmath,blkarray}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.markings}
+
+\hypersetup{colorlinks=true,urlcolor=blue}
+
+\newcommand{\bb}{\mathbb}
+\newcommand{\mc}{\mathcal}
+\newcommand{\ms}{\mathscr}
+
+\makeoddhead{myheadings}{Math 381}{Discrete Mathematical Modeling}{\thepage}
+\pagestyle{myheadings}
+
+\setlist[enumerate,2]{label = (\alph*)}
+
+\begin{document}
+
+\begin{center}
+\textbf{\large Homework 8} \\
+\emph{Due Friday, March 1}
+\end{center}
+
+\begin{enumerate}[leftmargin=*]
+
+\item Problem 4, page 951.\\
+\emph{Absorbing Markov chains} are used in marketing to model the probability that a customer who is contacted by telephone will eventually buy a product. Consider a prospective customer who has never been called about purchasing a product. After one call, there is a 60\% chance that the customer will express a low degree of interest in the product, a 30\% chance of a high degree of interest, and a 10\% chance the customer will be deleted from the company’s list of prospective customers. Consider a customer who currently expresses a low degree of interest in the product. After another call, there is a 30\% chance that the customer will purchase the product, a 20\% chance the person will be deleted from the list, a 30\% chance that the customer will still possess a low degree of interest, and a 20\% chance that the customer will express a high degree of interest. Consider a customer who currently expresses a high degree of interest in the product. After another call, there is a 50\% chance that the customer will have purchased the product, a 40\% chance that the customer will still have a high degree of interest and a 10\% chance that the customer will have a low degree of interest\\
+        \begin{enumerate}
+		\item What is the probability that a new prospective customer will eventually purchase the product? 
+		\item What is the probability that a low-interest prospective customer will ever be deleted from the list? 
+		\item On the average, how many times will a new prospective customer be called before either purchasing the product or being deleted from the list?
+\end{enumerate}
+\textbf{Solution:}  
+N = customer who hasn’t been called yet\\
+Li = Customer with a low degree of interest in the product\\
+Hi = Customer with a high degree of interest in the product\\
+D = Customer who is deleted from the list of prospective customers\\
+P = Customer who purchased the product\\
+
+\[
+\mathbf{P} = 
+        \begin{blockarray}{cccccc}
+           & N & Li  & Hi  &   D &   P \\
+        \begin{block}{r[rrrrr]}
+        N  & 0 & 0.6 & 0.3 & 0.1 & 0\\
+        Li & 0 & 0.3 & 0.2 & 0.2 & 0.3\\
+        Hi & 0 & 0.1 & 0.4 & 0   & 0.5\\
+        D  & 0 & 0   & 0   & 1   & 0\\
+        P  & 0 & 0   & 0   & 0   & 1\\ 
+        \end{block}
+    \end{blockarray}
+
+Q = 
+        \begin{blockarray}{ccc}
+        \begin{block}{[rrr]}
+        0 & 0.6 & 0.3\\
+        0 & 0.3 & 0.2\\
+        0 & 0.1 & 0.4\\
+        \end{block}
+    \end{blockarray}   
+R = 
+        \begin{blockarray}{ccc}
+        \begin{block}{[rrr]}
+        0.1 & 0\\
+        0.2 & 0.3\\
+        0 & 0.5\\
+        \end{block}
+    \end{blockarray}
+\\
+(I - Q)^{-1} = \begin{bmatrix}
+1 & 0.975 & 0.825 \\
+0 & 1.5 & 0.5 \\
+0 & 0.25 & 1.75
+\end{bmatrix}.
+(I - Q)^{-1} R = \begin{bmatrix}
+0.295 & 0.705 \\
+0.3 & 0.7 \\
+0.05 & 0.95
+\end{bmatrix}.
+\]
+\\
+*Used computer to calculate the inverse of I-Q\\
+(a) the probability that a new prospective customer will eventually purchase the product is 70.5\%.\\
+(b) the probability that a low-interest prospective customer will ever be deleted from the list is 30\%.\\
+(c) 1 + 0.975 + 0.825 = 2.8\\
+On the average, a new prospective customer be will called 2.8 times before either purchasing the product or being deleted from the list\\
+
+\item \emph{Genetic drift} is a concept in evolutionary biology where the frequency of a particular gene variant in a population can change over time due to random chance, even without natural selection.
+
+	The \emph{Wright-Fisher model} is a Markov chain model for genetic drift, described as follows. Consider a population of a species over time. Assume that over time, the population consists of generations 0, 1, 2, 3, \dots, with no overlap between generations. Assume each generation has the same number $N$ individuals. We focus on a particular gene in this population. Every individual has two copies of this gene, and therefore every generation has $2N$ copies of the gene. Every copy of the gene can be one of two variants (alleles), A or B. We want to keep track of the frequencies of A and B through each generation.
+	
+		Let $X_t$ be the number of copies of allele A in generation $t$. We set transition probabilities as follows:
+		\[
+		P(X_{t+1} = j \mid X_t = i) = \frac{(2N)!}{j!(2N-j)!} \left( \frac{i}{2N} \right)^j \left( 1 - \frac{i}{2N} \right)^{2N-j}.
+		\]
+		This can be interpreted as follows: When a new generation is created, each of its $2N$ genes is drawn independently and uniformly at random from the set of $2N$ genes of the previous generation.
+		
+	\begin{enumerate}
+		\item What are the absorbing states of this Markov chain? In real-world terms, what do these absorbing states mean?\\
+            Solution: \\
+            1. Plug \( i = 0 \) into the formula:\\
+            \( \left( \frac{i}{2N} \right)^j = 0^j \), which is 0 for all \( j > 0 \). Therefore, the only non-zero probability is for \( j = 0 \), which is an absorbing state.\\
+            2. Plug \( i = 2N \) into the formula:\\
+            \( \left( 1 - \frac{i}{2N} \right)^{2N - j} = 0^{2N - j} \), which is 0 for all \( j < 2N \). The only non-zero probability is for \( j = 2N \), which is another absorbing state. 
+
+            If \(X_t = 0\), allele A has been completely lost, and allele B is fixed; if \(X_t = 2N\), allele A is fixed in the population.
+
+		\item Let $N = 50$. If generation 0 has $i = 10$ copies of allele A, find the probability that eventually all copies of the gene in the population will be allele A.\\
+            Solution:\\
+            According to the code, the result is 0.10000000000000325.\\    
+		\item Repeat part (b) for different values of $N$ and $i$. \textbf{Please submit the code you used to do this, and some of the test values you used and the results of those tests.}
+		
+		Come up with a conjecture on the probability that eventually all copies of the gene will be A, in terms of $N$ and $i$.
+
+        The Code is attached below, change N in the main method and change i by changing variable initial\_copies.
+	\end{enumerate}
+\end{enumerate}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Screenshot 2024-03-01 154334.png}
+    \caption{Code for Q2 b and c}
+    \label{fig:enter-label}
+\end{figure}
+\end{document}
